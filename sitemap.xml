@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://yoursite.com/2018/03/24/create-personal-blog/</loc>
+    
+    <lastmod>2018-03-25T11:55:12.232Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/03/25/new-blog/</loc>
+    
+    <lastmod>2018-03-25T09:32:48.765Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/03/25/bind-domain/</loc>
+    
+    <lastmod>2018-03-25T03:05:52.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2018-03-24T14:23:13.164Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2018-03-24T14:23:13.163Z</lastmod>
+    
+  </url>
+  
+</urlset>
