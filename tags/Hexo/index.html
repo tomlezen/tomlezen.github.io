@@ -84,7 +84,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '6.0.6',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -202,6 +202,7 @@
       
         <p class="site-subtitle">My code runs fine</p>
       
+    <canvas width="200" height="120" id="clock_canvas"></canvas>
   </div>
 
   <div class="site-nav-toggle">
@@ -366,7 +367,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Hexo<small>标签</small>
+        <h1>Hexo
         </h1>
       </div>
 
@@ -588,7 +589,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">3k</span>
   
 
   
@@ -597,7 +598,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点总阅读时长">0:02</span>
+    <span title="站点总阅读时长">0:03</span>
   
 </div>
 
@@ -634,12 +635,17 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
     
 
+    <canvas id="canvas" style="width: 100%; height: 100%; position: fixed; left: 0; top: 0; pointer-events: none;"></canvas>
+
   </div>
+
 
   
 
@@ -676,6 +682,11 @@
 
 
 
+
+
+
+
+
   
   
     <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
@@ -694,6 +705,21 @@
   
   
     <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/m/perlin.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/m/index.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/c/index.js"></script>
   
 
 
