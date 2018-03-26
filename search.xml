@@ -6,22 +6,9 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[新博客]]></title>
-    <url>%2F2018%2F03%2F25%2Fnew-blog%2F</url>
-    <content type="text"><![CDATA[这是我新建的第一篇博文]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-        <tag>学习</tag>
-        <tag>练习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[使用Github Pages、Hexo搭建个人博客]]></title>
     <url>%2F2018%2F03%2F24%2Fcreate-personal-blog%2F</url>
-    <content type="text"><![CDATA[Github Pages免费给开发者托管个人网站，但是只能托管静态内容，但是对于一般的博客网站足矣。Hexo是一个开源、简洁高效的博客框架，可以帮助开发者快速搭建自己的博客网站。 基础开发环境搭建安装配置Nodejs安装配置Git，安装完后记得进行以下配置：12$ git config --global user.name "Your Name"$ git config --global user.email "email@example.com" 安装配置Hexo安装hexo-cli1$ npm install hexo-cli -g 创建博客网站初始化新建一个网站项目，即网站生成的路径，如果不设置会默认在当前目录下创建：1$ npm init &lt;folder&gt; 安装相关依赖模块：12$ cd &lt;folder&gt; $ npm install 安装完成之后，文件夹的目录如下：12345678.├── _config.yml├── package.json├── scaffolds├── source| ├── _drafts| └── _posts└── themes 3. 对网站进行相关配置打开_config.yml文件，可进行如下修改： 12345title: 你的网站标题subtitle: 你的网站副标题description: 你的网站描述author: 你的名字language: zh-CN 更多的详细配置请参考官方文档 预览网站启动服务器，在浏览器中访问http://localhost:4000/，可以看到一篇名为Hello World的博文：1$ hexo server 新建博文创建123$ hexo new post new-blog // 'new-blog'您可以任意指定名字或$ hexo new new-blog 执行成功后在source/_posts文件夹下会有一个名为：new-blog.md的文件。注意：Hexo有三种默认布局：post、page和draft，使用hexo new时默认布局为post 编辑打开new-blog.md文件，里面的内容如下：修改文章：title: 新博客添加标签，两种写法：1234567tags: [学习, 练习, Blog]或tags:- 学习- 练写- Blog// 注意第二种写法的空格 添加分类，写法与标签一样：12categories:- 学习 在---线下面填写博文内容：1这是我建立的第一篇博文！ 完整内容如下：1234567891011---title: 新博客date: 2018-03-25 10:29:04tags: - 学习- 练习- Blogcategories:- 学习---这是我新建的第一篇博文 重新启动网站hexo server，效果如下（我这里使用了主题，效果可能会有所不同）： Github Pages配置Github账号、仓库创建Github官网：通过邮箱注册一个账号；登陆Github，在主界面点击右上边的New repository按钮开始创建一个代码仓库；在Repository name填写仓库名，格式必须为xxx.github.io，xxx即为你的Github用户名，千万别填写错误，然后点击Create respository按钮完成创建： 添加SSH Key官方文档打开git bash，输入以下命令检查是否已存在id_rsa.pub或者id_dsa.pub，如果存在请移步**复制key：1$ ls -al ~/.ssh 创建ssh key：12$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"// 别忘了换成你自己Github邮箱地址，命令执行后需要点击三次点击Enter键即可保存成功 复制key：1234567mac:$ pbcopy &lt; ~/.ssh/id_rsa.pubwindows:$ clip &lt; ~/.ssh/id_rsa.publinux:$ sudo apt-get install xclip$ xclip -sel clip &lt; ~/.ssh/id_rsa.pub 添加到Github账户，依次点击Settings-&gt;SSH and GPG keys，进入SSH and GPG keys管理界面，Github帮助文档:点击 New SSH key按钮新建key：输入Title可随意指定，并在key输入框内粘贴之前复制的key：最后点击Add SSH key，确认创建 部署网站配置github仓库地址打开网站目录下的_config.yml文件，进行如下修改：1234deploy: type: git repo: git@github.com:tomlezen/tomlezen.github.io.git branch: master repo参数为之前在github上创建的xxx.github.io仓库SSH地址 部署1hexo deploy]]></content>
+    <content type="text"><![CDATA[Github Pages免费给开发者托管个人网站，但是只能托管静态内容，但是对于一般的博客网站足矣。Hexo是一个开源、简洁高效的博客框架，可以帮助开发者快速搭建自己的博客网站。 基础开发环境搭建安装配置Nodejs安装配置Git，安装完后记得进行以下配置：12$ git config --global user.name "Your Name"$ git config --global user.email "email@example.com" 安装配置Hexo安装hexo-cli1$ npm install hexo-cli -g 创建博客网站初始化新建一个网站项目，即网站生成的路径，如果不设置会默认在当前目录下创建：1$ npm init &lt;folder&gt; 安装相关依赖模块：12$ cd &lt;folder&gt; $ npm install 安装完成之后，文件夹的目录如下：12345678.├── _config.yml├── package.json├── scaffolds├── source| ├── _drafts| └── _posts└── themes 3. 对网站进行相关配置打开_config.yml文件，可进行如下修改： 12345title: 你的网站标题subtitle: 你的网站副标题description: 你的网站描述author: 你的名字language: zh-CN 更多的详细配置请参考官方文档 预览网站启动服务器，在浏览器中访问http://localhost:4000/，可以看到一篇名为Hello World的博文：1$ hexo server 新建博文创建123$ hexo new post new-blog // 'new-blog'您可以任意指定名字或$ hexo new new-blog 执行成功后在source/_posts文件夹下会有一个名为：new-blog.md的文件。注意：Hexo有三种默认布局：post、page和draft，使用hexo new时默认布局为post 编辑打开new-blog.md文件，里面的内容如下：修改文章：title: 新博客添加标签，两种写法：1234567tags: [学习, 练习, Blog]或tags:- 学习- 练写- Blog// 注意第二种写法的空格 添加分类，写法与标签一样：12categories:- 学习 在---线下面填写博文内容：1这是我建立的第一篇博文！ 完整内容如下：1234567891011---title: 新博客date: 2018-03-25 10:29:04tags: - 学习- 练习- Blogcategories:- 学习---这是我新建的第一篇博文 重新启动网站hexo server，效果如下（我这里使用了主题，效果可能会有所不同）： Github Pages配置Github账号、仓库创建Github官网：通过邮箱注册一个账号；登陆Github，在主界面点击右上边的New repository按钮开始创建一个代码仓库；在Repository name填写仓库名，格式必须为xxx.github.io，xxx即为你的Github用户名，千万别填写错误，然后点击Create respository按钮完成创建： 添加SSH Key官方文档打开git bash，输入以下命令检查是否已存在id_rsa.pub或者id_dsa.pub，如果存在请移步**复制key：1$ ls -al ~/.ssh 创建ssh key：12$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"// 别忘了换成你自己Github邮箱地址，命令执行后需要点击三次点击Enter键即可保存成功 复制key：1234567mac:$ pbcopy &lt; ~/.ssh/id_rsa.pubwindows:$ clip &lt; ~/.ssh/id_rsa.publinux:$ sudo apt-get install xclip$ xclip -sel clip &lt; ~/.ssh/id_rsa.pub 添加到Github账户，依次点击Settings-&gt;SSH and GPG keys，进入SSH and GPG keys管理界面，Github帮助文档:点击 New SSH key按钮新建key：输入Title可随意指定，并在key输入框内粘贴之前复制的key：最后点击Add SSH key，确认创建 部署网站配置github仓库地址打开网站目录下的_config.yml文件，进行如下修改：1234deploy: type: git repo: git@github.com:tomlezen/tomlezen.github.io.git branch: master repo参数为之前在github上创建的xxx.github.io仓库SSH地址 部署1hexo deploy 等待部署完成，刷新github仓库就可以看到相关网站代码了 成果在浏览器中输入xxx.github.io（xxx即是你的Github用户名）就能访问你的博客啦。]]></content>
       <categories>
         <category>教程</category>
       </categories>
@@ -29,6 +16,7 @@
         <tag>博客</tag>
         <tag>Github Pages</tag>
         <tag>Blog</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>

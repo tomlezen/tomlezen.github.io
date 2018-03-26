@@ -107,11 +107,11 @@
 
 
   <meta name="description" content="Github Pages免费给开发者托管个人网站，但是只能托管静态内容，但是对于一般的博客网站足矣。Hexo是一个开源、简洁高效的博客框架，可以帮助开发者快速搭建自己的博客网站。 基础开发环境搭建安装配置Nodejs安装配置Git，安装完后记得进行以下配置：12$ git config --global user.name &quot;Your Name&quot;$ git config --global user">
-<meta name="keywords" content="博客,Github Pages,Blog">
+<meta name="keywords" content="博客,Github Pages,Blog,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Github Pages、Hexo搭建个人博客">
 <meta property="og:url" content="http://yoursite.com/2018/03/24/create-personal-blog/index.html">
-<meta property="og:site_name" content="My code runs fine">
+<meta property="og:site_name" content="Tomlezen的博客">
 <meta property="og:description" content="Github Pages免费给开发者托管个人网站，但是只能托管静态内容，但是对于一般的博客网站足矣。Hexo是一个开源、简洁高效的博客框架，可以帮助开发者快速搭建自己的博客网站。 基础开发环境搭建安装配置Nodejs安装配置Git，安装完后记得进行以下配置：12$ git config --global user.name &quot;Your Name&quot;$ git config --global user">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/03/24/create-personal-blog/img-1.png">
@@ -122,7 +122,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/03/24/create-personal-blog/img-6.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/24/create-personal-blog/img-7.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/24/create-personal-blog/img-9.png">
-<meta property="og:updated_time" content="2018-03-25T11:55:12.232Z">
+<meta property="og:updated_time" content="2018-03-25T13:45:05.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Github Pages、Hexo搭建个人博客">
 <meta name="twitter:description" content="Github Pages免费给开发者托管个人网站，但是只能托管静态内容，但是对于一般的博客网站足矣。Hexo是一个开源、简洁高效的博客框架，可以帮助开发者快速搭建自己的博客网站。 基础开发环境搭建安装配置Nodejs安装配置Git，安装完后记得进行以下配置：12$ git config --global user.name &quot;Your Name&quot;$ git config --global user">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="My code runs fine" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Tomlezen的博客" type="application/atom+xml" />
 
 
 
@@ -145,7 +145,7 @@
   };
 </script>
 
-  <title>使用Github Pages、Hexo搭建个人博客 | My code runs fine</title>
+  <title>使用Github Pages、Hexo搭建个人博客 | Tomlezen的博客</title>
   
 
 
@@ -205,12 +205,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">My code runs fine</span>
+        <span class="site-title">Tomlezen的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">My code runs fine</p>
       
   </div>
 
@@ -253,15 +253,6 @@
   <li class="menu-item menu-item-essays">
     <a href="/essays/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />随笔</a>
-</li>
-
-      
-        
-        
-          
-  <li class="menu-item menu-item-ittech">
-    <a href="/categories/ittech" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-desktop"></i> <br />技术</a>
 </li>
 
       
@@ -375,13 +366,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/create-personal-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tomlezen">
+      <meta itemprop="name" content="tomlzen">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My code runs fine">
+      <meta itemprop="name" content="Tomlezen的博客">
     </span>
 
     
@@ -481,6 +472,9 @@
 <h2 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h2><h3 id="配置github仓库地址"><a href="#配置github仓库地址" class="headerlink" title="配置github仓库地址"></a>配置github仓库地址</h3><p>打开网站目录下的<code>_config.yml</code>文件，进行如下修改：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:tomlezen/tomlezen.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
 <p><code>repo</code>参数为之前在github上创建的<code>xxx.github.io</code>仓库SSH地址<br><img src="/2018/03/24/create-personal-blog/img-9.png"></p>
 <h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>等待部署完成，刷新github仓库就可以看到相关网站代码了</p>
+<h3 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h3><p>在浏览器中输入<code>xxx.github.io</code>（xxx即是你的Github用户名）就能访问你的博客啦。</p>
+
       
     </div>
 
@@ -506,6 +500,8 @@
           
             <a href="/tags/Blog/" rel="tag"># Blog</a>
           
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
         </div>
       
 
@@ -523,8 +519,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/25/new-blog/" rel="prev" title="新博客">
-                新博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/25/bind-domain/" rel="prev" title="bind_domain">
+                bind_domain <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -590,10 +586,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.png"
-                alt="Tomlezen" />
+                alt="tomlzen" />
             
-              <p class="site-author-name" itemprop="name">Tomlezen</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">tomlzen</p>
+              <p class="site-description motion-element" itemprop="description">儿时立志出乡关，学不成名誓不还</p>
           </div>
 
           
@@ -603,7 +599,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -618,9 +614,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -641,9 +635,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -700,7 +692,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础开发环境搭建"><span class="nav-number">1.</span> <span class="nav-text">基础开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装配置Nodejs"><span class="nav-number">1.1.</span> <span class="nav-text">安装配置Nodejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装配置Git，安装完后记得进行以下配置："><span class="nav-number">1.2.</span> <span class="nav-text">安装配置Git，安装完后记得进行以下配置：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装配置Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo-cli"><span class="nav-number">2.1.</span> <span class="nav-text">安装hexo-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建博客网站"><span class="nav-number">2.2.</span> <span class="nav-text">创建博客网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-对网站进行相关配置"><span class="nav-number">2.3.</span> <span class="nav-text">3. 对网站进行相关配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预览网站"><span class="nav-number">2.4.</span> <span class="nav-text">预览网站</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建博文"><span class="nav-number">3.</span> <span class="nav-text">新建博文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">3.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑"><span class="nav-number">3.2.</span> <span class="nav-text">编辑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Pages配置"><span class="nav-number">4.</span> <span class="nav-text">Github Pages配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github账号、仓库创建"><span class="nav-number">4.1.</span> <span class="nav-text">Github账号、仓库创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加SSH-Key"><span class="nav-number">4.2.</span> <span class="nav-text">添加SSH Key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署网站"><span class="nav-number">5.</span> <span class="nav-text">部署网站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置github仓库地址"><span class="nav-number">5.1.</span> <span class="nav-text">配置github仓库地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">5.2.</span> <span class="nav-text">部署</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础开发环境搭建"><span class="nav-number">1.</span> <span class="nav-text">基础开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装配置Nodejs"><span class="nav-number">1.1.</span> <span class="nav-text">安装配置Nodejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装配置Git，安装完后记得进行以下配置："><span class="nav-number">1.2.</span> <span class="nav-text">安装配置Git，安装完后记得进行以下配置：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装配置Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo-cli"><span class="nav-number">2.1.</span> <span class="nav-text">安装hexo-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建博客网站"><span class="nav-number">2.2.</span> <span class="nav-text">创建博客网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-对网站进行相关配置"><span class="nav-number">2.3.</span> <span class="nav-text">3. 对网站进行相关配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预览网站"><span class="nav-number">2.4.</span> <span class="nav-text">预览网站</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建博文"><span class="nav-number">3.</span> <span class="nav-text">新建博文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">3.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑"><span class="nav-number">3.2.</span> <span class="nav-text">编辑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-Pages配置"><span class="nav-number">4.</span> <span class="nav-text">Github Pages配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github账号、仓库创建"><span class="nav-number">4.1.</span> <span class="nav-text">Github账号、仓库创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加SSH-Key"><span class="nav-number">4.2.</span> <span class="nav-text">添加SSH Key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署网站"><span class="nav-number">5.</span> <span class="nav-text">部署网站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置github仓库地址"><span class="nav-number">5.1.</span> <span class="nav-text">配置github仓库地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">5.2.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成果"><span class="nav-number">5.3.</span> <span class="nav-text">成果</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -724,7 +716,7 @@
   <span class="with-love" id="animate"> 
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Tomlezen</span>
+  <span class="author" itemprop="copyrightHolder">tomlzen</span>
 
   
 
