@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[bind_domain]]></title>
+    <title><![CDATA[Github Pages绑定自己的域名]]></title>
     <url>%2F2018%2F03%2F25%2Fbind-domain%2F</url>
     <content type="text"></content>
+      <tags>
+        <tag>Github Pages</tag>
+        <tag>Hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[使用Github Pages、Hexo搭建个人博客]]></title>
@@ -13,10 +17,10 @@
         <category>教程</category>
       </categories>
       <tags>
-        <tag>博客</tag>
         <tag>Github Pages</tag>
-        <tag>Blog</tag>
         <tag>Hexo</tag>
+        <tag>博客</tag>
+        <tag>Blog</tag>
       </tags>
   </entry>
 </search>

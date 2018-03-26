@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-25T03:05:52.589Z</updated>
+  <updated>2018-03-26T02:38:33.645Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,20 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>bind_domain</title>
+    <title>Github Pages绑定自己的域名</title>
     <link href="http://yoursite.com/2018/03/25/bind-domain/"/>
     <id>http://yoursite.com/2018/03/25/bind-domain/</id>
     <published>2018-03-25T03:05:52.000Z</published>
-    <updated>2018-03-25T03:05:52.589Z</updated>
+    <updated>2018-03-26T02:38:33.645Z</updated>
     
     <summary type="html">
     
     </summary>
     
+    
+      <category term="Github Pages" scheme="http://yoursite.com/tags/Github-Pages/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
@@ -51,13 +55,13 @@
       <category term="教程" scheme="http://yoursite.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
       <category term="Github Pages" scheme="http://yoursite.com/tags/Github-Pages/"/>
     
-      <category term="Blog" scheme="http://yoursite.com/tags/Blog/"/>
-    
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Blog" scheme="http://yoursite.com/tags/Blog/"/>
     
   </entry>
   
