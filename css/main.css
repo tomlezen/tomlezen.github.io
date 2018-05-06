@@ -738,6 +738,20 @@ pre .javascript .function {
   max-width: 150px;
   max-height: 150px;
 }
+.exturl {
+  background-color: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid #999;
+}
+.exturl .fa {
+  font-size: 14px;
+}
+.exturl:active,
+.exturl:hover {
+  outline: 0;
+  color: #222;
+  border-bottom-color: #222;
+}
 .post-body .note {
   position: relative;
   padding: 15px;
@@ -1744,6 +1758,13 @@ pre .javascript .function {
 .fancybox-close:hover {
   border: none;
 }
+.post-copyright {
+  margin: 2em 0 0;
+  padding: 0.5em 1em;
+  border-left: 3px solid #ff1700;
+  background-color: #f9f9f9;
+  list-style: none;
+}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -1929,7 +1950,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #17f165;
+  background: #86ff21;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2204,6 +2225,19 @@ pre .javascript .function {
     transform: scale(1.1);
   }
 }
+#gitment-display-button {
+  display: inline-block;
+  padding: 0 15px;
+  color: #0a9caf;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #0a9caf;
+  border-radius: 4px;
+}
+#gitment-display-button:hover {
+  color: #fff;
+  background: #0a9caf;
+}
 .post-spread {
   margin-top: 20px;
   text-align: center;
@@ -2360,6 +2394,29 @@ pre .javascript .function {
 .site-pv .busuanzi-value,
 .page-pv .busuanzi-value {
   margin: 0 5px;
+}
+#needsharebutton-postbottom {
+  position: relative;
+  cursor: pointer;
+  height: 26px;
+}
+#needsharebutton-postbottom .btn {
+  display: initial;
+  padding: 1px 4px;
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+#needsharebutton-float {
+  position: fixed;
+  bottom: 38px;
+  left: -8px;
+  z-index: 9999;
+  cursor: pointer;
+}
+#needsharebutton-float .btn {
+  padding: 0 10px 0 14px;
+  border: 1px solid #555;
+  border-radius: 4px;
 }
 .page-archive .archive-page-counter {
   position: relative;

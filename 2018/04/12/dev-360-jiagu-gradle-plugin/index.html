@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.6',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="360加固助手下载到360加固宝下载对应系统的助手，Linux版本下载需要关注其公众号，我之前没看文档而用Mac版本的代替折腾了很久；解压助手并将目录下的jiagu文件夹复制到对应Jenkins服务器上，具体放在什么位置你自己决定，只要能正常访问就行； Jenkins环境变量配置​    环境变量名可根据自己的需要而定配置360加固文件夹路径，即上一步将jiagu文件夹放置的路径：配置360用户名">
+<meta name="keywords" content="Android,Kotlin,Gradle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle插件实现jenkins构建apk时自动进行360加固">
+<meta property="og:url" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/index.html">
+<meta property="og:site_name" content="Tomlezen的博客">
+<meta property="og:description" content="360加固助手下载到360加固宝下载对应系统的助手，Linux版本下载需要关注其公众号，我之前没看文档而用Mac版本的代替折腾了很久；解压助手并将目录下的jiagu文件夹复制到对应Jenkins服务器上，具体放在什么位置你自己决定，只要能正常访问就行； Jenkins环境变量配置​    环境变量名可根据自己的需要而定配置360加固文件夹路径，即上一步将jiagu文件夹放置的路径：配置360用户名">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_1.png">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_2.png">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_3.png">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_4.png">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_5.png">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_6.png">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_7.png">
+<meta property="og:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_8.png">
+<meta property="og:updated_time" content="2018-05-05T11:26:59.330Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle插件实现jenkins构建apk时自动进行360加固">
+<meta name="twitter:description" content="360加固助手下载到360加固宝下载对应系统的助手，Linux版本下载需要关注其公众号，我之前没看文档而用Mac版本的代替折腾了很久；解压助手并将目录下的jiagu文件夹复制到对应Jenkins服务器上，具体放在什么位置你自己决定，只要能正常访问就行； Jenkins环境变量配置​    环境变量名可根据自己的需要而定配置360加固文件夹路径，即上一步将jiagu文件夹放置的路径：配置360用户名">
+<meta name="twitter:image" content="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/img_1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tomlezen的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Gradle插件实现jenkins构建apk时自动进行360加固 | Tomlezen的博客</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tomlezen的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">My code runs fine</p>
+      
+    <canvas width="200" height="120" id="clock_canvas"></canvas>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-essays">
+    <a href="/essays/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />随笔</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/tomlezen" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tomlezen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tomlezen的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Gradle插件实现jenkins构建apk时自动进行360加固</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T09:39:57+08:00">2018-04-12</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于：</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-05T19:26:59+08:00">2018-05-05</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计：</span>
+                
+                <span title="字数统计">7.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长&asymp;</span>
+                
+                <span title="阅读时长">0:08</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="360加固助手下载"><a href="#360加固助手下载" class="headerlink" title="360加固助手下载"></a>360加固助手下载</h2><p>到<a href="http://jiagu.360.cn/" target="_blank" rel="noopener">360加固宝</a>下载对应系统的助手，<strong>Linux版本下载需要关注其公众号</strong>，我之前没看文档而用Mac版本的代替折腾了很久；<br>解压助手并将目录下的<code>jiagu</code>文件夹复制到对应Jenkins服务器上，具体放在什么位置你自己决定，只要能正常访问就行；<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_1.png"></p>
+<h2 id="Jenkins环境变量配置"><a href="#Jenkins环境变量配置" class="headerlink" title="Jenkins环境变量配置"></a>Jenkins环境变量配置</h2><p>​    <strong><em>环境变量名可根据自己的需要而定</em></strong><br>配置360加固文件夹路径，即上一步将<code>jiagu</code>文件夹放置的路径：<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_2.png"><br>配置360用户名和密码：<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_3.png"><br>配置AndroidSDK路径，因为我们需要使用<code>Build Tools</code>里面的工具对加固后的apk进行对齐和签名操作：<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_4.png"></p>
+<h2 id="Gradle插件开发"><a href="#Gradle插件开发" class="headerlink" title="Gradle插件开发"></a>Gradle插件开发</h2><h3 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h3><p>新建Android工程<code>360JiaGuPlugin</code>（也可直接创建java工程，但Android工程方便调试开发）;<br>新建<code>Java Library</code>模块<code>plugin</code>;<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_5.png"></p>
+<h3 id="配置相关依赖"><a href="#配置相关依赖" class="headerlink" title="配置相关依赖"></a>配置相关依赖</h3><p>在<code>plugin</code>的<code>build.gradle</code>文件新增以下依赖：<br><figure class="highlight plain"><figcaption><span>build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation gradleApi()</span><br><span class="line">    implementation &quot;com.android.tools.build:gradle:3.1.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建加固任务"><a href="#创建加固任务" class="headerlink" title="创建加固任务"></a>创建加固任务</h3><p>新建<code>JiaGuPlugin</code>类并继承<code>DefaultTask</code>，完整代码如下:<br><figure class="highlight plain"><figcaption><span>JiaGuPlugin.kt Koltin:language</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">package com.tlz.jiaguplugin</span><br><span class="line"></span><br><span class="line">import com.android.build.gradle.AppExtension</span><br><span class="line">import org.gradle.api.DefaultTask</span><br><span class="line">import org.gradle.api.tasks.TaskAction</span><br><span class="line">import java.io.BufferedReader</span><br><span class="line">import java.io.File</span><br><span class="line">import java.io.InputStreamReader</span><br><span class="line"></span><br><span class="line">class JiaGuTask : DefaultTask() &#123;</span><br><span class="line"></span><br><span class="line">  /** shell文件名. */</span><br><span class="line">  private val shellFileName = &quot;jiagu_360.sh&quot;</span><br><span class="line"></span><br><span class="line">  @TaskAction</span><br><span class="line">  fun run() &#123;</span><br><span class="line">    val shellFile = project.file(shellFileName)</span><br><span class="line">    // 先删除之前创建的shell文件.</span><br><span class="line">    if (shellFile.exists()) &#123;</span><br><span class="line">      shellFile.delete()</span><br><span class="line">    &#125;</span><br><span class="line">    shellFile.createNewFile()</span><br><span class="line">    // 获取release apk文件路径.</span><br><span class="line">    (project.extensions.getByName(&quot;android&quot;) as? AppExtension)?.apply &#123;</span><br><span class="line">      applicationVariants.firstOrNull &#123; it.buildType.name == &quot;release&quot; &#125;</span><br><span class="line">          ?.apply &#123;</span><br><span class="line">            outputs.firstOrNull()</span><br><span class="line">                ?.apply &#123;</span><br><span class="line">                  // android sdk 路径</span><br><span class="line">                  val androidHome = System.getenv(&quot;ANDROID_HOME&quot;)</span><br><span class="line">                  // 获取最新版本的build-tool路径</span><br><span class="line">                  val buildToolPath = File(&quot;$androidHome/build-tools&quot;).listFiles().last().absolutePath</span><br><span class="line">                  // 签名工具文件路径</span><br><span class="line">                  val signerJarPath = &quot;$buildToolPath/apksigner&quot;</span><br><span class="line">                  // 对齐工具文件路径</span><br><span class="line">                  val zipalignJarPath = &quot;$buildToolPath/zipalign&quot;</span><br><span class="line">                  // 加固jar文件路径</span><br><span class="line">                  val jiaguJarPath = &quot;$&#123;System.getenv(&quot;360JIAGU_PATH&quot;)&#125;/jiagu.jar&quot;</span><br><span class="line">                  // 360加固用户名</span><br><span class="line">                  val user = System.getenv(&quot;360JIAGU_USER&quot;)</span><br><span class="line">                  // 360加固用户密码</span><br><span class="line">                  val password = System.getenv(&quot;360JIAGU_PWD&quot;)</span><br><span class="line">                  // 获取签名文件路径及密码</span><br><span class="line">                  val keyPath = signingConfig.storeFile.absolutePath</span><br><span class="line">                  val keyPass = signingConfig.storePassword</span><br><span class="line">                  val apkPath = outputFile.absolutePath</span><br><span class="line">                  // release apk文件名</span><br><span class="line">                  val apkFileName = outputFile.nameWithoutExtension</span><br><span class="line">                  // 加固输出文件夹</span><br><span class="line">                  val outApkPath = outputFile.parentFile.absolutePath</span><br><span class="line">                  // 加固后的文件</span><br><span class="line">                  val jiaguFilePath = &quot;$outApkPath/$&#123;apkFileName&#125;_$&#123;versionName.replace(&quot;.&quot;, &quot;&quot;)&#125;_jiagu.apk&quot;</span><br><span class="line">                  // apk对齐后的输出文件</span><br><span class="line">                  val zipOutPath = &quot;$outApkPath/$&#123;apkFileName&#125;_aligned.apk&quot;</span><br><span class="line">    </span><br><span class="line">                  // 构建shell文件的内容</span><br><span class="line">                  val shCode = StringBuilder()</span><br><span class="line">                  shCode.append(&quot;#!/bin/bash\n\n&quot;)</span><br><span class="line">                  // 登陆加固账户</span><br><span class="line">                  shCode.append(&quot;java -jar $jiaguJarPath -login $user $password\n&quot;)</span><br><span class="line">                  // 执行加固</span><br><span class="line">                  shCode.append(&quot;java -jar $jiaguJarPath -jiagu $apkPath $outApkPath\n&quot;)</span><br><span class="line">                  // 对apk 进行对齐操作</span><br><span class="line">                  shCode.append(&quot;echo \&quot;------ zipalign start ------\&quot;\n&quot;)</span><br><span class="line">                  shCode.append(&quot;$signerJarPath -v 4 $jiaguFilePath $zipOutPath\n&quot;)</span><br><span class="line">                  shCode.append(&quot;echo \&quot;------ zipalign finish ------\&quot;\n&quot;)</span><br><span class="line">                  // 对apk进行签名</span><br><span class="line">                  shCode.append(&quot;echo \&quot;------ sign start ------\&quot;\n&quot;)</span><br><span class="line">                  shCode.append(&quot;$zipalignJarPath sign --ks $keyPath $zipOutPath &lt;&lt;EOF\n&quot; +</span><br><span class="line">                      &quot;$keyPass\n&quot; +</span><br><span class="line">                      &quot;EOF&quot;)</span><br><span class="line">                  shCode.append(&quot;echo \&quot;------ sign finish ------\&quot;\n&quot;)</span><br><span class="line">                  shellFile.writeText(shCode.toString())</span><br><span class="line">                  // 执行shell文件</span><br><span class="line">                  val pro = Runtime.getRuntime().exec(&quot;sh $&#123;shellFile.absolutePath&#125; &gt;&gt; logfile&quot;)</span><br><span class="line">                  pro.waitFor()</span><br><span class="line">                  // 读取并输出结果</span><br><span class="line">                  val read = BufferedReader(InputStreamReader(pro.inputStream))</span><br><span class="line">                  var line: String? = read.readLine()</span><br><span class="line">                  while (line != null) &#123;</span><br><span class="line">                    println(line)</span><br><span class="line">                    line = read.readLine()</span><br><span class="line">                  &#125;</span><br><span class="line">                  // 删除加固文件</span><br><span class="line">                  File(jiaguFilePath).delete()</span><br><span class="line">                  // 重命名已签名的文件</span><br><span class="line">                  if (File(zipOutPath).renameTo(File(&quot;$outApkPath/$&#123;apkFileName&#125;_signed.apk&quot;))) &#123;</span><br><span class="line">                    println(&quot;重命名文件成功&quot;)</span><br><span class="line">                  &#125;</span><br><span class="line">                &#125;</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><em>如果需要多渠道打包，请参考360加固的命令行说明，对以上处理代码做出相应调整即可</em></p>
+<h3 id="创建插件并初始化任务"><a href="#创建插件并初始化任务" class="headerlink" title="创建插件并初始化任务"></a>创建插件并初始化任务</h3><p>在插件中创建加固任务并在<code>assembleRelease</code>任务结束时执行加固任务，完整代码如下：<br><figure class="highlight plain"><figcaption><span>JiaGuPlugin.kt Kotlin:language</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.tlz.jiaguplugin</span><br><span class="line"></span><br><span class="line">import org.gradle.api.Plugin</span><br><span class="line">import org.gradle.api.internal.project.ProjectInternal</span><br><span class="line">import javax.inject.Inject</span><br><span class="line"></span><br><span class="line">open class JiaGuPlugin @Inject constructor() : Plugin&lt;ProjectInternal&gt; &#123;</span><br><span class="line"></span><br><span class="line">  override fun apply(project: ProjectInternal?) &#123;</span><br><span class="line">    project?.let &#123;</span><br><span class="line">      it.afterEvaluate &#123;</span><br><span class="line">        if (check360JiaguEnv()) &#123;</span><br><span class="line">          // 创建任务</span><br><span class="line">          it.tasks.create(&quot;jiagu_360&quot;, JiaGuTask::class.java)</span><br><span class="line">          // 在assembleRelease任务结束后执行jiagu_360任务</span><br><span class="line">          it.tasks.findByPath(&quot;assembleRelease&quot;)?.apply &#123; finalizedBy(&quot;jiagu_360&quot;) &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 检查360加固环境变量是否存在.</span><br><span class="line">   * @return Boolean</span><br><span class="line">      */</span><br><span class="line">    private fun check360JiaguEnv(): Boolean &#123;</span><br><span class="line">    // 360加固文件路径</span><br><span class="line">    val path = System.getenv(&quot;360JIAGU_PATH&quot;)</span><br><span class="line">    // 360加固用户名</span><br><span class="line">    val user = System.getenv(&quot;360JIAGU_USER&quot;)</span><br><span class="line">    // 360加固账户密码</span><br><span class="line">    val password = System.getenv(&quot;360JIAGU_PWD&quot;)</span><br><span class="line">    return path?.isNotEmpty() == true &amp;&amp; user?.isNotEmpty() == true &amp;&amp; password?.isNotEmpty() == true</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h3><p>Gradle插件开发步骤及配置这里就不再叙述，网上有很多教程。<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_6.png"></p>
+<h3 id="在本地发布插件"><a href="#在本地发布插件" class="headerlink" title="在本地发布插件"></a>在本地发布插件</h3><p>在<code>build.gradle</code>文件应用<code>maven</code>插件，并配置<code>uploadArchives</code>任务，完整<code>build.gradle</code>文件如下:<br><figure class="highlight plain"><figcaption><span>build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;java-library&apos;</span><br><span class="line">apply plugin: &apos;kotlin&apos;</span><br><span class="line">apply plugin: &apos;maven&apos;</span><br><span class="line"></span><br><span class="line">group &apos;com.tlz.jiaguplugin&apos;</span><br><span class="line">// 发布版本号</span><br><span class="line">version &apos;1.0.0&apos;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])</span><br><span class="line">    implementation&quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version&quot;</span><br><span class="line">    implementation gradleApi()</span><br><span class="line">    implementation &quot;com.android.tools.build:gradle:3.1.0&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sourceCompatibility = &quot;1.7&quot;</span><br><span class="line">targetCompatibility = &quot;1.7&quot;</span><br><span class="line"></span><br><span class="line">uploadArchives&#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            repository(url: uri(&apos;./repo&apos;))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>在<code>Terminal</code>输入命令<code>gradlew uploadArchives</code>发布，完成后<code>plugin</code>文件下会有一个名为<code>repo</code>的文件夹，里面就是刚才发布的插件。<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_7.png"></p>
+<h3 id="应用插件并测试"><a href="#应用插件并测试" class="headerlink" title="应用插件并测试"></a>应用插件并测试</h3><p>在工程下的<code>build.gradle</code>里依赖刚才发布的插件：<br><img src="/2018/04/12/dev-360-jiagu-gradle-plugin/img_8.png"><br>在<code>app</code>的<code>build.gradle</code>里应用插件<code>apply plugin: &#39;com.tlz.jiaguplugin&#39;</code>，插件名为<code>.properties</code>的文件名。<br>在Jenkins上集成该项目，自动构建结束在<code>app.build.outputs.apk.release</code>下的<code>.xxx_signed.apk</code>为加固并签名成功的文件。</p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>到此就结束了，测试成功后最好将插件发布到公司内部或远程仓库，方便项目依赖使用<br><br>[参考文章]: <a href="https://blog.csdn.net/likuan0214/article/details/75090103" target="_blank" rel="noopener">https://blog.csdn.net/likuan0214/article/details/75090103</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Tomlezen</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/" title="Gradle插件实现jenkins构建apk时自动进行360加固">http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+            <a href="/tags/Gradle/" rel="tag"># Gradle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/30/setting-bottomsheetdialogfragment-background/" rel="next" title="修改BottomSheetDialogFragment背景">
+                <i class="fa fa-chevron-left"></i> 修改BottomSheetDialogFragment背景
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/05/build-shadowsocks/" rel="prev" title="在vps服务器上搭建Shadowsocks服务器">
+                在vps服务器上搭建Shadowsocks服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Tomlezen" />
+            
+              <p class="site-author-name" itemprop="name">Tomlezen</p>
+              <p class="site-description motion-element" itemprop="description">儿时立志出乡关，学不成名誓不还</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/tomlezen" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:tomlezen@protonmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#360加固助手下载"><span class="nav-number">1.</span> <span class="nav-text">360加固助手下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins环境变量配置"><span class="nav-number">2.</span> <span class="nav-text">Jenkins环境变量配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle插件开发"><span class="nav-number">3.</span> <span class="nav-text">Gradle插件开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目创建"><span class="nav-number">3.1.</span> <span class="nav-text">项目创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置相关依赖"><span class="nav-number">3.2.</span> <span class="nav-text">配置相关依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建加固任务"><span class="nav-number">3.3.</span> <span class="nav-text">创建加固任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建插件并初始化任务"><span class="nav-number">3.4.</span> <span class="nav-text">创建插件并初始化任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置插件"><span class="nav-number">3.5.</span> <span class="nav-text">配置插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在本地发布插件"><span class="nav-number">3.6.</span> <span class="nav-text">在本地发布插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用插件并测试"><span class="nav-number">3.7.</span> <span class="nav-text">应用插件并测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-number">3.8.</span> <span class="nav-text">结束</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tomlezen</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    <canvas id="canvas" style="width: 100%; height: 100%; position: fixed; left: 0; top: 0; pointer-events: none;"></canvas>
+
+  </div>
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/m/perlin.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/m/index.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/c/index.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'tomlezen',
+            repo: 'BlogComments',
+            
+            lang: "zh-CN" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '03dcaacf1d3d3e6ce0f3994d0f836504c7fb1ded',
+            
+                client_id: '304be2410e95001bd882'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.6"></script>
+
+
+  
+
+</body>
+</html>

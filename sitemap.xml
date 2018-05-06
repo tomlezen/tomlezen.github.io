@@ -2,42 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/03/26/create-personal-blog-experience/</loc>
+    <loc>http://tomlezen.com/2018/05/05/build-shadowsocks/</loc>
     
-    <lastmod>2018-03-26T14:39:00.478Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/03/25/bind-domain/</loc>
-    
-    <lastmod>2018-03-26T13:33:57.106Z</lastmod>
+    <lastmod>2018-05-06T00:04:05.122Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/03/24/create-personal-blog/</loc>
+    <loc>http://tomlezen.com/2018/03/30/setting-bottomsheetdialogfragment-background/</loc>
+    
+    <lastmod>2018-05-05T11:26:59.335Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/</loc>
+    
+    <lastmod>2018-05-05T11:26:59.330Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tomlezen.com/2018/03/28/kotlin-native-hello-world/</loc>
+    
+    <lastmod>2018-04-05T02:44:23.990Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tomlezen.com/2018/03/25/bind-domain/</loc>
+    
+    <lastmod>2018-03-28T13:41:47.294Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tomlezen.com/2018/03/26/create-personal-blog-experience/</loc>
+    
+    <lastmod>2018-03-28T11:55:31.684Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tomlezen.com/2018/03/24/create-personal-blog/</loc>
     
     <lastmod>2018-03-26T13:33:54.485Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
+    <loc>http://tomlezen.com/categories/index.html</loc>
     
     <lastmod>2018-03-26T11:51:45.300Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/essays/index.html</loc>
+    <loc>http://tomlezen.com/essays/index.html</loc>
     
     <lastmod>2018-03-26T11:51:45.300Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://tomlezen.com/tags/index.html</loc>
     
     <lastmod>2018-03-26T11:51:45.300Z</lastmod>
     
