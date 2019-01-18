@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tomlezen.com/"/>
-  <updated>2018-09-13T12:44:44.302Z</updated>
+  <updated>2019-01-18T13:15:13.538Z</updated>
   <id>http://tomlezen.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TeamCity部署Android持续化集成</title>
+    <link href="http://tomlezen.com/2019/01/18/teamcity-deploy-android/"/>
+    <id>http://tomlezen.com/2019/01/18/teamcity-deploy-android/</id>
+    <published>2019-01-18T02:10:30.000Z</published>
+    <updated>2019-01-18T13:15:13.538Z</updated>
+    
+    <content type="html"><![CDATA[<p>公司持续集成用的是<code>Jenkins</code>，<code>TeamCity</code>是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少<br>安装过程比较简单，这里略过，<a href="https://confluence.jetbrains.com/display/TCD18/TeamCity+Documentation" target="_blank" rel="noopener">官方文档</a></p><h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><ol><li><p>进入<code>Administration</code> </p><img src="/2019/01/18/teamcity-deploy-android/img-1.png"></li><li><p>点击<code>CreateProject</code>，填写代码仓库地址，如果有账户密码填入即可，然后点击<code>Proceed</code></p><img src="/2019/01/18/teamcity-deploy-android/img-2.png"></li><li><p>填写项目名和构建配置名称，构建配置名称默认是<code>Build</code>，可根据自己需求更改，我这里改成了<code>Pack</code>，然后点击<code>Proceed</code></p><img src="/2019/01/18/teamcity-deploy-android/img-3.png"></li></ol><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol><li><p>等待创建完成，勾选Gradle编译步骤，点击<code>Use selected</code></p><img src="/2019/01/18/teamcity-deploy-android/img-4.png"></li><li><p>一般需求是编译release包，所以修改下gradle任务，点击<code>edit</code></p><img src="/2019/01/18/teamcity-deploy-android/img-5.png"></li><li><p>将<code>build</code>改为<code>assembleRelease</code>，这里可根据自己工程配置buildType自行修改，<strong>Gradle Wrapper</strong>也可根据自己的需求选择对应配置的版本</p><img src="/2019/01/18/teamcity-deploy-android/img-6.png"></li><li><p><strong>JDK</strong>也可以根据需求配置不同版本</p></li><li><p>保存</p></li><li><p>配置apk输出路径，选择左侧功能列表<code>General Setting</code>，路径规则是<code>源码路径 =&gt; 输出路径</code>，一般情况下设置成<code>app\build\outputs\apk =&gt; outputs</code>就可以了，别忘了保存</p><img src="/2019/01/18/teamcity-deploy-android/img-9.png"></li><li><p>配置<code>ANROID_HOME</code>环境变量，打开<br><code>TeamCity/buildAgent/conf/buildAgent.properties</code>文件，在末尾加载android sdk的路径：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env.ANDROID_HOME=你的sdk路径</span><br></pre></td></tr></table></figure></li></ol><h2 id="可选配置"><a href="#可选配置" class="headerlink" title="可选配置"></a>可选配置</h2><h3 id="修改git配置"><a href="#修改git配置" class="headerlink" title="修改git配置"></a>修改git配置</h3><ol><li><p>选择左侧功能列表<code>Version Control Setting</code>，点击<code>Edit</code></p><img src="/2019/01/18/teamcity-deploy-android/img-7.png"></li></ol><h3 id="修改触发规则"><a href="#修改触发规则" class="headerlink" title="修改触发规则"></a>修改触发规则</h3><ol><li><p>选择左侧功能列表<code>Triggers</code>，可以自己添加触发规则</p></li><li><p>如果不想自动触发，可以将规则关闭或者删除</p><img src="/2019/01/18/teamcity-deploy-android/img-8.png"></li></ol><h3 id="自定义参数"><a href="#自定义参数" class="headerlink" title="自定义参数"></a>自定义参数</h3><ol><li><p>选择左侧功能列表<code>Parameters</code>，添加自己需求的参数即可</p><img src="/2019/01/18/teamcity-deploy-android/img-12.png"></li></ol><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><ol><li><p>点击<code>Run</code>开启一个编译任务</p><img src="/2019/01/18/teamcity-deploy-android/img-10.png"></li><li><p>生成的apk文件在<code>Artifacts</code>下</p><img src="/2019/01/18/teamcity-deploy-android/img-11.png"></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;公司持续集成用的是&lt;code&gt;Jenkins&lt;/code&gt;，&lt;code&gt;TeamCity&lt;/code&gt;是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少&lt;br&gt;安装过程比较简单，这里略过，&lt;a href=&quot;https://confluence.jetbrains.com/
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="教程" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="Android" scheme="http://tomlezen.com/tags/Android/"/>
+    
+      <category term="TeamCity" scheme="http://tomlezen.com/tags/TeamCity/"/>
+    
+      <category term="持续集成" scheme="http://tomlezen.com/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+    
+  </entry>
   
   <entry>
     <title>在vps服务器上搭建Shadowsocks服务器</title>

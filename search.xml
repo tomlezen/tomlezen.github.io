@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[TeamCity部署Android持续化集成]]></title>
+    <url>%2F2019%2F01%2F18%2Fteamcity-deploy-android%2F</url>
+    <content type="text"><![CDATA[公司持续集成用的是Jenkins，TeamCity是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少安装过程比较简单，这里略过，官方文档 创建项目 进入Administration 点击CreateProject，填写代码仓库地址，如果有账户密码填入即可，然后点击Proceed 填写项目名和构建配置名称，构建配置名称默认是Build，可根据自己需求更改，我这里改成了Pack，然后点击Proceed 配置 等待创建完成，勾选Gradle编译步骤，点击Use selected 一般需求是编译release包，所以修改下gradle任务，点击edit 将build改为assembleRelease，这里可根据自己工程配置buildType自行修改，Gradle Wrapper也可根据自己的需求选择对应配置的版本 JDK也可以根据需求配置不同版本 保存 配置apk输出路径，选择左侧功能列表General Setting，路径规则是源码路径 =&gt; 输出路径，一般情况下设置成app\build\outputs\apk =&gt; outputs就可以了，别忘了保存 配置ANROID_HOME环境变量，打开TeamCity/buildAgent/conf/buildAgent.properties文件，在末尾加载android sdk的路径： 1env.ANDROID_HOME=你的sdk路径 可选配置修改git配置 选择左侧功能列表Version Control Setting，点击Edit 修改触发规则 选择左侧功能列表Triggers，可以自己添加触发规则 如果不想自动触发，可以将规则关闭或者删除 自定义参数 选择左侧功能列表Parameters，添加自己需求的参数即可 运行 点击Run开启一个编译任务 生成的apk文件在Artifacts下]]></content>
+      <categories>
+        <category>技术</category>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>TeamCity</tag>
+        <tag>持续集成</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[在vps服务器上搭建Shadowsocks服务器]]></title>
     <url>%2F2018%2F05%2F05%2Fbuild-shadowsocks%2F</url>
     <content type="text"><![CDATA[搭建shadowsocks服务器之前得还需要一台vps服务器，这里就不介绍vps服务器购买方式，网上已有蛮多的教程并且每个商家的购买方式也不一。 安装环境安装epel扩展源和更新：12yum -y install epel-releaseyum update 安装pip:1yum -y install python-pip 查看pip是否安装成功:1pip -V 安装Shadowsocks和配置通过pip安装shadowsocks：1pip install shadowsocks 编辑配置文件:1vi /etc/shadowsocks.json 进入编辑模式并复制以下内容：1234567891011121314&#123; &quot;server&quot;: &quot;服务器的ip地址&quot;, &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;port_password&quot;: &#123; &quot;8381&quot;: &quot;tomlezen1&quot;, &quot;8382&quot;: &quot;tomlezen2&quot;, &quot;8383&quot;: &quot;tomlezen3&quot;, &quot;8384&quot;: &quot;tomlezen4&quot; &#125;, &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; server: vps服务器地址 port_password: 配置多个账号和密码 method：加密方式如果不需要配置多账号：12345678910&#123; &quot;server&quot;: &quot;服务器的ip地址&quot;, &quot;server_port&quot;: &quot;8381&quot;, &quot;local_address&quot;: &quot;127.0.0.1&quot;, &quot;local_port&quot;:1080, &quot;password&quot;: &quot;password&quot;, &quot;timeout&quot;:300, &quot;method&quot;:&quot;aes-256-cfb&quot;, &quot;fast_open&quot;: false&#125; 启动Shadowsocks:1ssserver -c /etc/shadowsocks.json -d start 这样就可以通过Shadowsocks客户端访问啦 安装配置SupervisorSupervisor是一个进程管理工具，可以很方便的监听、启动、停止、重启一个或多个进程安装:1pip install supervisor copy一份配置文件到etc目录:1echo_supervisord_conf &gt; /etc/supervisord.conf 打开配置文件:1vi /etc/supervisord.conf 进入编辑模式，在末尾添加上一下内容:12345[program:shadowsocks]command=ssserver -c /etc/shadowsocks.json -d startautostart=trueuser=rootdirect_stde=true 启动supervisor服务：1supervisord 这样就算完成啦，更多supervisor使用请参考官方文档]]></content>

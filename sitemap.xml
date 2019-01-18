@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tomlezen.com/2019/01/18/teamcity-deploy-android/</loc>
+    
+    <lastmod>2019-01-18T13:15:13.538Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tomlezen.com/2018/05/05/build-shadowsocks/</loc>
     
     <lastmod>2018-09-13T12:44:44.302Z</lastmod>
@@ -58,14 +65,14 @@
   </url>
   
   <url>
-    <loc>http://tomlezen.com/tags/index.html</loc>
+    <loc>http://tomlezen.com/categories/index.html</loc>
     
     <lastmod>2018-03-26T11:51:45.300Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tomlezen.com/categories/index.html</loc>
+    <loc>http://tomlezen.com/tags/index.html</loc>
     
     <lastmod>2018-03-26T11:51:45.300Z</lastmod>
     
