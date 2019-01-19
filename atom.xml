@@ -5,9 +5,9 @@
   <subtitle>My code runs fine</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://tomlezen.com/"/>
+  <link href="http://blog.tomlezen.com/"/>
   <updated>2019-01-18T13:15:13.538Z</updated>
-  <id>http://tomlezen.com/</id>
+  <id>http://blog.tomlezen.com/</id>
   
   <author>
     <name>Tomlezen</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>TeamCity部署Android持续化集成</title>
-    <link href="http://tomlezen.com/2019/01/18/teamcity-deploy-android/"/>
-    <id>http://tomlezen.com/2019/01/18/teamcity-deploy-android/</id>
+    <link href="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/"/>
+    <id>http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/</id>
     <published>2019-01-18T02:10:30.000Z</published>
     <updated>2019-01-18T13:15:13.538Z</updated>
     
@@ -34,23 +34,23 @@
     
     </summary>
     
-      <category term="技术" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://blog.tomlezen.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="教程" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/%E6%95%99%E7%A8%8B/"/>
+      <category term="教程" scheme="http://blog.tomlezen.com/categories/%E6%8A%80%E6%9C%AF/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="Android" scheme="http://tomlezen.com/tags/Android/"/>
+      <category term="Android" scheme="http://blog.tomlezen.com/tags/Android/"/>
     
-      <category term="TeamCity" scheme="http://tomlezen.com/tags/TeamCity/"/>
+      <category term="TeamCity" scheme="http://blog.tomlezen.com/tags/TeamCity/"/>
     
-      <category term="持续集成" scheme="http://tomlezen.com/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+      <category term="持续集成" scheme="http://blog.tomlezen.com/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
     
   </entry>
   
   <entry>
     <title>在vps服务器上搭建Shadowsocks服务器</title>
-    <link href="http://tomlezen.com/2018/05/05/build-shadowsocks/"/>
-    <id>http://tomlezen.com/2018/05/05/build-shadowsocks/</id>
+    <link href="http://blog.tomlezen.com/2018/05/05/build-shadowsocks/"/>
+    <id>http://blog.tomlezen.com/2018/05/05/build-shadowsocks/</id>
     <published>2018-05-05T12:23:46.000Z</published>
     <updated>2018-09-13T12:44:44.302Z</updated>
     
@@ -66,17 +66,17 @@
     
     </summary>
     
-      <category term="教程" scheme="http://tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
+      <category term="教程" scheme="http://blog.tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="Shadowsocks" scheme="http://tomlezen.com/tags/Shadowsocks/"/>
+      <category term="Shadowsocks" scheme="http://blog.tomlezen.com/tags/Shadowsocks/"/>
     
   </entry>
   
   <entry>
     <title>Gradle插件实现jenkins构建apk时自动进行360加固</title>
-    <link href="http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/"/>
-    <id>http://tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/</id>
+    <link href="http://blog.tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/"/>
+    <id>http://blog.tomlezen.com/2018/04/12/dev-360-jiagu-gradle-plugin/</id>
     <published>2018-04-12T01:39:57.000Z</published>
     <updated>2018-05-05T11:26:59.330Z</updated>
     
@@ -91,21 +91,21 @@
     
     </summary>
     
-      <category term="教程" scheme="http://tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
+      <category term="教程" scheme="http://blog.tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="Android" scheme="http://tomlezen.com/tags/Android/"/>
+      <category term="Android" scheme="http://blog.tomlezen.com/tags/Android/"/>
     
-      <category term="Kotlin" scheme="http://tomlezen.com/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="http://blog.tomlezen.com/tags/Kotlin/"/>
     
-      <category term="Gradle" scheme="http://tomlezen.com/tags/Gradle/"/>
+      <category term="Gradle" scheme="http://blog.tomlezen.com/tags/Gradle/"/>
     
   </entry>
   
   <entry>
     <title>修改BottomSheetDialogFragment背景</title>
-    <link href="http://tomlezen.com/2018/03/30/setting-bottomsheetdialogfragment-background/"/>
-    <id>http://tomlezen.com/2018/03/30/setting-bottomsheetdialogfragment-background/</id>
+    <link href="http://blog.tomlezen.com/2018/03/30/setting-bottomsheetdialogfragment-background/"/>
+    <id>http://blog.tomlezen.com/2018/03/30/setting-bottomsheetdialogfragment-background/</id>
     <published>2018-03-30T09:45:06.000Z</published>
     <updated>2018-05-05T11:26:59.335Z</updated>
     
@@ -120,21 +120,21 @@
     
     </summary>
     
-      <category term="技术" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://blog.tomlezen.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Android" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/Android/"/>
+      <category term="Android" scheme="http://blog.tomlezen.com/categories/%E6%8A%80%E6%9C%AF/Android/"/>
     
     
-      <category term="Android" scheme="http://tomlezen.com/tags/Android/"/>
+      <category term="Android" scheme="http://blog.tomlezen.com/tags/Android/"/>
     
-      <category term="Kotlin" scheme="http://tomlezen.com/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="http://blog.tomlezen.com/tags/Kotlin/"/>
     
   </entry>
   
   <entry>
     <title>Windows上运行Kotlin Native第一个程序：Hello World</title>
-    <link href="http://tomlezen.com/2018/03/28/kotlin-native-hello-world/"/>
-    <id>http://tomlezen.com/2018/03/28/kotlin-native-hello-world/</id>
+    <link href="http://blog.tomlezen.com/2018/03/28/kotlin-native-hello-world/"/>
+    <id>http://blog.tomlezen.com/2018/03/28/kotlin-native-hello-world/</id>
     <published>2018-03-28T02:42:12.000Z</published>
     <updated>2018-04-05T02:44:23.990Z</updated>
     
@@ -149,19 +149,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://blog.tomlezen.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="Kotlin-Native" scheme="http://tomlezen.com/categories/%E6%8A%80%E6%9C%AF/Kotlin-Native/"/>
+      <category term="Kotlin-Native" scheme="http://blog.tomlezen.com/categories/%E6%8A%80%E6%9C%AF/Kotlin-Native/"/>
     
     
-      <category term="Kotlin Native" scheme="http://tomlezen.com/tags/Kotlin-Native/"/>
+      <category term="Kotlin Native" scheme="http://blog.tomlezen.com/tags/Kotlin-Native/"/>
     
   </entry>
   
   <entry>
     <title>有感</title>
-    <link href="http://tomlezen.com/2018/03/26/create-personal-blog-experience/"/>
-    <id>http://tomlezen.com/2018/03/26/create-personal-blog-experience/</id>
+    <link href="http://blog.tomlezen.com/2018/03/26/create-personal-blog-experience/"/>
+    <id>http://blog.tomlezen.com/2018/03/26/create-personal-blog-experience/</id>
     <published>2018-03-26T14:18:54.000Z</published>
     <updated>2018-03-28T11:55:31.684Z</updated>
     
@@ -181,8 +181,8 @@
   
   <entry>
     <title>Github Pages绑定自己的域名</title>
-    <link href="http://tomlezen.com/2018/03/25/bind-domain/"/>
-    <id>http://tomlezen.com/2018/03/25/bind-domain/</id>
+    <link href="http://blog.tomlezen.com/2018/03/25/bind-domain/"/>
+    <id>http://blog.tomlezen.com/2018/03/25/bind-domain/</id>
     <published>2018-03-25T03:05:52.000Z</published>
     <updated>2018-03-28T13:41:47.294Z</updated>
     
@@ -197,19 +197,19 @@
     
     </summary>
     
-      <category term="教程" scheme="http://tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
+      <category term="教程" scheme="http://blog.tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="Github Pages" scheme="http://tomlezen.com/tags/Github-Pages/"/>
+      <category term="Github Pages" scheme="http://blog.tomlezen.com/tags/Github-Pages/"/>
     
-      <category term="Hexo" scheme="http://tomlezen.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://blog.tomlezen.com/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>使用Github Pages、Hexo搭建个人博客</title>
-    <link href="http://tomlezen.com/2018/03/24/create-personal-blog/"/>
-    <id>http://tomlezen.com/2018/03/24/create-personal-blog/</id>
+    <link href="http://blog.tomlezen.com/2018/03/24/create-personal-blog/"/>
+    <id>http://blog.tomlezen.com/2018/03/24/create-personal-blog/</id>
     <published>2018-03-24T15:54:08.000Z</published>
     <updated>2018-03-26T13:33:54.485Z</updated>
     
@@ -224,16 +224,16 @@
     
     </summary>
     
-      <category term="教程" scheme="http://tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
+      <category term="教程" scheme="http://blog.tomlezen.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="Github Pages" scheme="http://tomlezen.com/tags/Github-Pages/"/>
+      <category term="Github Pages" scheme="http://blog.tomlezen.com/tags/Github-Pages/"/>
     
-      <category term="Hexo" scheme="http://tomlezen.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://blog.tomlezen.com/tags/Hexo/"/>
     
-      <category term="博客" scheme="http://tomlezen.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="博客" scheme="http://blog.tomlezen.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
-      <category term="Blog" scheme="http://tomlezen.com/tags/Blog/"/>
+      <category term="Blog" scheme="http://blog.tomlezen.com/tags/Blog/"/>
     
   </entry>
   
