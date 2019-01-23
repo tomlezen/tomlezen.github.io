@@ -132,31 +132,18 @@
 
 
 
-  <meta name="description" content="公司持续集成用的是Jenkins，TeamCity是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少安装过程比较简单，这里略过，官方文档 创建项目 进入Administration    点击CreateProject，填写代码仓库地址，如果有账户密码填入即可，然后点击Proceed   填写项目名和构建配置名称，构建配置名称默认是Build，可根据自己需求更改，我这里改成了Pack，然后点击P">
-<meta name="keywords" content="Android,TeamCity,持续集成">
+  <meta name="description" content="因为公司每次应用发版都需要手动对apk进行360和乐固加固，感觉特别麻烦，因而在开发任务闲置时间开发了一个Gradle插件：AndroidReinforcePlugin，实现打包时自动完成360和乐固加固操作。  前言 插件开发的初衷是在CI中应用，但后面考虑到实际情况有可能会有本地打包，所以做很多兼容保证CI和本地as都能使用，因而配置稍有些复杂 因为没有拿到乐固的secretId和secret">
+<meta name="keywords" content="Gradle,Kotlin,Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TeamCity部署Android持续化集成">
-<meta property="og:url" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/index.html">
+<meta property="og:title" content="AndroidReinforcePlugin使用">
+<meta property="og:url" content="http://blog.tomlezen.com/2019/01/22/android-reinforce-use-manual/index.html">
 <meta property="og:site_name" content="Tomlezen的博客">
-<meta property="og:description" content="公司持续集成用的是Jenkins，TeamCity是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少安装过程比较简单，这里略过，官方文档 创建项目 进入Administration    点击CreateProject，填写代码仓库地址，如果有账户密码填入即可，然后点击Proceed   填写项目名和构建配置名称，构建配置名称默认是Build，可根据自己需求更改，我这里改成了Pack，然后点击P">
+<meta property="og:description" content="因为公司每次应用发版都需要手动对apk进行360和乐固加固，感觉特别麻烦，因而在开发任务闲置时间开发了一个Gradle插件：AndroidReinforcePlugin，实现打包时自动完成360和乐固加固操作。  前言 插件开发的初衷是在CI中应用，但后面考虑到实际情况有可能会有本地打包，所以做很多兼容保证CI和本地as都能使用，因而配置稍有些复杂 因为没有拿到乐固的secretId和secret">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-1.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-2.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-3.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-4.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-5.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-6.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-9.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-7.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-8.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-12.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-10.png">
-<meta property="og:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-11.png">
-<meta property="og:updated_time" content="2019-01-18T13:15:13.538Z">
+<meta property="og:updated_time" content="2019-01-23T10:06:18.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TeamCity部署Android持续化集成">
-<meta name="twitter:description" content="公司持续集成用的是Jenkins，TeamCity是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少安装过程比较简单，这里略过，官方文档 创建项目 进入Administration    点击CreateProject，填写代码仓库地址，如果有账户密码填入即可，然后点击Proceed   填写项目名和构建配置名称，构建配置名称默认是Build，可根据自己需求更改，我这里改成了Pack，然后点击P">
-<meta name="twitter:image" content="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/img-1.png">
+<meta name="twitter:title" content="AndroidReinforcePlugin使用">
+<meta name="twitter:description" content="因为公司每次应用发版都需要手动对apk进行360和乐固加固，感觉特别麻烦，因而在开发任务闲置时间开发了一个Gradle插件：AndroidReinforcePlugin，实现打包时自动完成360和乐固加固操作。  前言 插件开发的初衷是在CI中应用，但后面考虑到实际情况有可能会有本地打包，所以做很多兼容保证CI和本地as都能使用，因而配置稍有些复杂 因为没有拿到乐固的secretId和secret">
 
 
 
@@ -165,7 +152,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/"/>
+  <link rel="canonical" href="http://blog.tomlezen.com/2019/01/22/android-reinforce-use-manual/"/>
 
 
 
@@ -175,7 +162,7 @@
   };
 </script>
 
-  <title>TeamCity部署Android持续化集成 | Tomlezen的博客</title>
+  <title>AndroidReinforcePlugin使用 | Tomlezen的博客</title>
   
 
 
@@ -394,7 +381,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/">
+    <link itemprop="mainEntityOfPage" href="http://blog.tomlezen.com/2019/01/22/android-reinforce-use-manual/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tomlezen">
@@ -411,7 +398,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">TeamCity部署Android持续化集成</h2>
+          <h2 class="post-title" itemprop="name headline">AndroidReinforcePlugin使用</h2>
         
 
         <div class="post-meta">
@@ -423,7 +410,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-18T10:10:30+08:00">2019-01-18</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T13:52:00+08:00">2019-01-22</time>
             
 
             
@@ -444,7 +431,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-18T21:15:13+08:00">2019-01-18</time>
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-23T18:06:18+08:00">2019-01-23</time>
             
           </span>
 
@@ -467,7 +454,7 @@
                   ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/教程/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/GradlePlugin/" itemprop="url" rel="index"><span itemprop="name">GradlePlugin</span></a></span>
 
                 
                 
@@ -503,7 +490,7 @@
                 
                   <span class="post-meta-item-text">字数统计：</span>
                 
-                <span title="字数统计">819</span>
+                <span title="字数统计">2.7k</span>
               
 
               
@@ -517,7 +504,7 @@
                 
                   <span class="post-meta-item-text">阅读时长&asymp;</span>
                 
-                <span title="阅读时长">1 mins.</span>
+                <span title="阅读时长">4 mins.</span>
               
             </div>
           
@@ -537,63 +524,177 @@
       
 
       
-        <p>公司持续集成用的是<code>Jenkins</code>，<code>TeamCity</code>是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少<br>安装过程比较简单，这里略过，<a href="https://confluence.jetbrains.com/display/TCD18/TeamCity+Documentation" target="_blank" rel="noopener">官方文档</a></p>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><ol>
-<li><p>进入<code>Administration</code> </p>
-<img src="/2019/01/18/teamcity-deploy-android/img-1.png">
+        <p>因为公司每次应用发版都需要手动对apk进行360和乐固加固，感觉特别麻烦，因而在开发任务闲置时间开发了一个Gradle插件：<a href="&quot;https://github.com/tomlezen/AndroidReinforcePlugin&quot;">AndroidReinforcePlugin</a>，实现打包时自动完成360和乐固加固操作。</p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
+<li>插件开发的初衷是在CI中应用，但后面考虑到实际情况有可能会有本地打包，所以做很多兼容保证CI和本地as都能使用，因而配置稍有些复杂</li>
+<li>因为没有拿到乐固的secretId和secretKey，所以乐固相关功能并没有做测试</li>
+</ol>
+<h2 id="配置参数说明"><a href="#配置参数说明" class="headerlink" title="配置参数说明"></a>配置参数说明</h2><p>插件主要靠配置参数来控制加固，所以先说明下配置参数详情</p>
+<p><strong>配置参数基本上都是支持：<em>gradle文件、环境变量、动态properties</em>，优先级：<em>动态properties&gt;环境变量&gt;gradle</em>，这样做是考虑比较复杂的使用场景，比如本地使用的是开发签名，而CI使用的是发布签名 等等</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">gradle</th>
+<th style="text-align:center">环境变量</th>
+<th style="text-align:center">Properties</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">加固类型</td>
+<td style="text-align:center">reinforceType</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">reinforce_type</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:center">是否支持360加固</td>
+<td style="text-align:center">support</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">support_360</td>
+<td>false</td>
+</tr>
+<tr>
+<td style="text-align:center">360是否自动签名</td>
+<td style="text-align:center">autoSign</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">360_auto_sign</td>
+<td>true</td>
+</tr>
+<tr>
+<td style="text-align:center">360加固jar路径</td>
+<td style="text-align:center">path</td>
+<td style="text-align:center">360_PATH</td>
+<td style="text-align:center">360_path</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:center">360-是否多渠道</td>
+<td style="text-align:center">mulpkg</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">360_mulpkg</td>
+<td>false</td>
+</tr>
+<tr>
+<td style="text-align:center">360-多渠道配置文件</td>
+<td style="text-align:center">mulpkgConfigPath</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">360_mulpkg_config_path</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:center">360-增值服务配置</td>
+<td style="text-align:center">addConfig</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">360_add_config</td>
+<td>-x86</td>
+</tr>
+<tr>
+<td style="text-align:center">360-账户名</td>
+<td style="text-align:center">user</td>
+<td style="text-align:center">360_USER</td>
+<td style="text-align:center">360_pass</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:center">360-账户密码</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">360_PASS</td>
+<td style="text-align:center">360_path</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:center">是否支持乐固</td>
+<td style="text-align:center">support</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">support_le</td>
+<td>false</td>
+</tr>
+<tr>
+<td style="text-align:center">乐固是否自动签名</td>
+<td style="text-align:center">autoSign</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">le_auto_sign</td>
+<td>true</td>
+</tr>
+<tr>
+<td style="text-align:center">乐固jar路径</td>
+<td style="text-align:center">path</td>
+<td style="text-align:center">LE_PATH</td>
+<td style="text-align:center">le_path</td>
+<td>内置</td>
+</tr>
+<tr>
+<td style="text-align:center">乐固-secretId</td>
+<td style="text-align:center">secretId</td>
+<td style="text-align:center">LE_SECRET_ID</td>
+<td style="text-align:center">le_secret_id</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:center">乐固-secretKey</td>
+<td style="text-align:center">secretKey</td>
+<td style="text-align:center">LE_SECRET_KEY</td>
+<td style="text-align:center">le_secret_key</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:center">签名文件路径</td>
+<td style="text-align:center">signconfig配置</td>
+<td style="text-align:center">STORE_PATH</td>
+<td style="text-align:center">store_path</td>
+<td>根据signconfig</td>
+</tr>
+<tr>
+<td style="text-align:center">签名文件密码</td>
+<td style="text-align:center">signconfig配置</td>
+<td style="text-align:center">STORE_PASS</td>
+<td style="text-align:center">store_pass</td>
+<td>根据signconfig</td>
+</tr>
+<tr>
+<td style="text-align:center">签名key别名</td>
+<td style="text-align:center">signconfig配置</td>
+<td style="text-align:center">KEY_ALIAS</td>
+<td style="text-align:center">store_key_alias</td>
+<td>根据signconfig</td>
+</tr>
+<tr>
+<td style="text-align:center">签名key密码</td>
+<td style="text-align:center">signconfig配置</td>
+<td style="text-align:center">KEY_PASS</td>
+<td style="text-align:center">store_key_pass</td>
+<td>根据signconfig</td>
+</tr>
+</tbody>
+</table>
+<p><strong>部分参数说明如下：</strong></p>
+<ul>
+<li>加固类型值有5种<ol>
+<li><em>360</em>  360加固</li>
+<li><em>le</em> 乐固加固</li>
+<li><em>all</em> 360和乐固加固</li>
+<li><em>query</em> 根据flavorName匹配加固关键字选择对应的加固类型（不区分大小写），包含<strong>360、qihu</strong>字符则使用360加固，包含<strong>yyb、legu、yingyongbao、tencent</strong>字符则使用乐固加固</li>
+<li><em>空</em> 不使用加固</li>
+</ol>
 </li>
-<li><p>点击<code>CreateProject</code>，填写代码仓库地址，如果有账户密码填入即可，然后点击<code>Proceed</code></p>
-<img src="/2019/01/18/teamcity-deploy-android/img-2.png">
+<li>插件已经内置乐固工具文件，但是还是建议使用自己加固，因为内置的没有更新</li>
+<li>360加固工具每个os不一样，所以没办法内置，所以需要自己根据自己os配置</li>
+</ul>
+<p><strong><em>看着配置参数很多，如果不考虑复杂的情况配置很简单</em></strong> </p>
+<h2 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h2><h3 id="应用插件"><a href="#应用插件" class="headerlink" title="应用插件"></a>应用插件</h3><ol>
+<li><p>添加插件依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    classpath &quot;com.tlz.tools:reinforce:1.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>填写项目名和构建配置名称，构建配置名称默认是<code>Build</code>，可根据自己需求更改，我这里改成了<code>Pack</code>，然后点击<code>Proceed</code></p>
-<img src="/2019/01/18/teamcity-deploy-android/img-3.png">
+<li><p>应用插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">apply plugin: &apos;com.tlz.androidreinforceplugin&apos;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><p>等待创建完成，勾选Gradle编译步骤，点击<code>Use selected</code></p>
-<img src="/2019/01/18/teamcity-deploy-android/img-4.png">
-</li>
-<li><p>一般需求是编译release包，所以修改下gradle任务，点击<code>edit</code></p>
-<img src="/2019/01/18/teamcity-deploy-android/img-5.png">
-</li>
-<li><p>将<code>build</code>改为<code>assembleRelease</code>，这里可根据自己工程配置buildType自行修改，<strong>Gradle Wrapper</strong>也可根据自己的需求选择对应配置的版本</p>
-<img src="/2019/01/18/teamcity-deploy-android/img-6.png">
-</li>
-<li><p><strong>JDK</strong>也可以根据需求配置不同版本</p>
-</li>
-<li><p>保存</p>
-</li>
-<li><p>配置apk输出路径，选择左侧功能列表<code>General Setting</code>，路径规则是<code>源码路径 =&gt; 输出路径</code>，一般情况下设置成<code>app\build\outputs\apk =&gt; outputs</code>就可以了，别忘了保存</p>
-<img src="/2019/01/18/teamcity-deploy-android/img-9.png">
-</li>
-<li><p>配置<code>ANROID_HOME</code>环境变量，打开<br><code>TeamCity/buildAgent/conf/buildAgent.properties</code>文件，在末尾加载android sdk的路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env.ANDROID_HOME=你的sdk路径</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="可选配置"><a href="#可选配置" class="headerlink" title="可选配置"></a>可选配置</h2><h3 id="修改git配置"><a href="#修改git配置" class="headerlink" title="修改git配置"></a>修改git配置</h3><ol>
-<li><p>选择左侧功能列表<code>Version Control Setting</code>，点击<code>Edit</code></p>
-<img src="/2019/01/18/teamcity-deploy-android/img-7.png">
-</li>
-</ol>
-<h3 id="修改触发规则"><a href="#修改触发规则" class="headerlink" title="修改触发规则"></a>修改触发规则</h3><ol>
-<li><p>选择左侧功能列表<code>Triggers</code>，可以自己添加触发规则</p>
-</li>
-<li><p>如果不想自动触发，可以将规则关闭或者删除</p>
-<img src="/2019/01/18/teamcity-deploy-android/img-8.png">
-</li>
-</ol>
-<h3 id="自定义参数"><a href="#自定义参数" class="headerlink" title="自定义参数"></a>自定义参数</h3><ol>
-<li><p>选择左侧功能列表<code>Parameters</code>，添加自己需求的参数即可</p>
-<img src="/2019/01/18/teamcity-deploy-android/img-12.png">
-</li>
-</ol>
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><ol>
-<li><p>点击<code>Run</code>开启一个编译任务</p>
-<img src="/2019/01/18/teamcity-deploy-android/img-10.png">
-</li>
-<li><p>生成的apk文件在<code>Artifacts</code>下</p>
-<img src="/2019/01/18/teamcity-deploy-android/img-11.png"></li>
-</ol>
+<h3 id="Gradle参数配置"><a href="#Gradle参数配置" class="headerlink" title="Gradle参数配置"></a>Gradle参数配置</h3><p><strong>如果使用CI或者命令动态传参数可以不进行gradle配置</strong></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">AndroidReinForce &#123;</span><br><span class="line">    <span class="comment">//加固类型 四种方式 360 le all query 默认为空不使用任何加固</span></span><br><span class="line">    reinforceType = <span class="string">""</span></span><br><span class="line"></span><br><span class="line">    reinforce360 &#123;</span><br><span class="line">        <span class="comment">// 支持该加固 默认不支持</span></span><br><span class="line">        support = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 是否自动加固 默认为true</span></span><br><span class="line">        autoSign = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 配置自己的360账号</span></span><br><span class="line">        user = <span class="string">"你的360账号"</span></span><br><span class="line">        <span class="comment">// 配置自己的360账号密码</span></span><br><span class="line">        pass = <span class="string">"你的360账号密码"</span></span><br><span class="line">        <span class="comment">// 配置自己的360加固文件路径</span></span><br><span class="line">        path = file(<span class="string">"jiagu/jiagu.jar"</span>).absolutePath</span><br><span class="line">        <span class="comment">// 多渠道 默认为false</span></span><br><span class="line">        <span class="comment">// mulpkg = true</span></span><br><span class="line">        <span class="comment">// 多渠道文件配置路径 如果未开启多渠道 此参数可不填</span></span><br><span class="line">        <span class="comment">// mulpkgConfigPath = file("mulpkg_config.txt").absolutePath</span></span><br><span class="line">    &#125;</span><br><span class="line">    reinforceLe &#123;</span><br><span class="line">        <span class="comment">// 支持该加固 默认不支持</span></span><br><span class="line">        support = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 是否自动加固 默认为true</span></span><br><span class="line">        <span class="comment">// autoSign = true</span></span><br><span class="line">        <span class="comment">// 配置自己的乐固加固文件路径 可以选择不配置使用默认内置的</span></span><br><span class="line">        <span class="comment">// path = file("ms-shield.jar").absolutePath</span></span><br><span class="line">        <span class="comment">// 配置自己的乐固secretId</span></span><br><span class="line">        secretId = <span class="string">"你的secretId"</span></span><br><span class="line">        <span class="comment">// 配置自己的乐固secretKey</span></span><br><span class="line">        secretKey = <span class="string">"你的secretKey"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -625,7 +726,7 @@
     <strong>本文作者： </strong>Tomlezen</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/" title="TeamCity部署Android持续化集成">http://blog.tomlezen.com/2019/01/18/teamcity-deploy-android/</a>
+    <a href="http://blog.tomlezen.com/2019/01/22/android-reinforce-use-manual/" title="AndroidReinforcePlugin使用">http://blog.tomlezen.com/2019/01/22/android-reinforce-use-manual/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -638,11 +739,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Gradle/" rel="tag"># Gradle</a>
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
             <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/TeamCity/" rel="tag"># TeamCity</a>
-          
-            <a href="/tags/持续集成/" rel="tag"># 持续集成</a>
           
         </div>
       
@@ -655,8 +756,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/05/build-shadowsocks/" rel="next" title="在vps服务器上搭建Shadowsocks服务器">
-                <i class="fa fa-chevron-left"></i> 在vps服务器上搭建Shadowsocks服务器
+              <a href="/2019/01/18/teamcity-deploy-android/" rel="next" title="TeamCity部署Android持续化集成">
+                <i class="fa fa-chevron-left"></i> TeamCity部署Android持续化集成
               </a>
             
           </div>
@@ -664,10 +765,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/22/android-reinforce-use-manual/" rel="prev" title="AndroidReinforcePlugin使用">
-                AndroidReinforcePlugin使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -894,7 +991,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可选配置"><span class="nav-number">3.</span> <span class="nav-text">可选配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改git配置"><span class="nav-number">3.1.</span> <span class="nav-text">修改git配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改触发规则"><span class="nav-number">3.2.</span> <span class="nav-text">修改触发规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义参数"><span class="nav-number">3.3.</span> <span class="nav-text">自定义参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">4.</span> <span class="nav-text">运行</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置参数说明"><span class="nav-number">2.</span> <span class="nav-text">配置参数说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体使用"><span class="nav-number">3.</span> <span class="nav-text">具体使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用插件"><span class="nav-number">3.1.</span> <span class="nav-text">应用插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle参数配置"><span class="nav-number">3.2.</span> <span class="nav-text">Gradle参数配置</span></a></li></ol></li></ol></div>
             
 
           </div>

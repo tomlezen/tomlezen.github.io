@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AndroidReinforcePlugin使用]]></title>
+    <url>%2F2019%2F01%2F22%2Fandroid-reinforce-use-manual%2F</url>
+    <content type="text"><![CDATA[因为公司每次应用发版都需要手动对apk进行360和乐固加固，感觉特别麻烦，因而在开发任务闲置时间开发了一个Gradle插件：AndroidReinforcePlugin，实现打包时自动完成360和乐固加固操作。 前言 插件开发的初衷是在CI中应用，但后面考虑到实际情况有可能会有本地打包，所以做很多兼容保证CI和本地as都能使用，因而配置稍有些复杂 因为没有拿到乐固的secretId和secretKey，所以乐固相关功能并没有做测试 配置参数说明插件主要靠配置参数来控制加固，所以先说明下配置参数详情 配置参数基本上都是支持：gradle文件、环境变量、动态properties，优先级：动态properties&gt;环境变量&gt;gradle，这样做是考虑比较复杂的使用场景，比如本地使用的是开发签名，而CI使用的是发布签名 等等 含义 gradle 环境变量 Properties 默认值 加固类型 reinforceType 不支持 reinforce_type null 是否支持360加固 support 不支持 support_360 false 360是否自动签名 autoSign 不支持 360_auto_sign true 360加固jar路径 path 360_PATH 360_path null 360-是否多渠道 mulpkg 不支持 360_mulpkg false 360-多渠道配置文件 mulpkgConfigPath 不支持 360_mulpkg_config_path null 360-增值服务配置 addConfig 不支持 360_add_config -x86 360-账户名 user 360_USER 360_pass null 360-账户密码 pass 360_PASS 360_path null 是否支持乐固 support 不支持 support_le false 乐固是否自动签名 autoSign 不支持 le_auto_sign true 乐固jar路径 path LE_PATH le_path 内置 乐固-secretId secretId LE_SECRET_ID le_secret_id null 乐固-secretKey secretKey LE_SECRET_KEY le_secret_key null 签名文件路径 signconfig配置 STORE_PATH store_path 根据signconfig 签名文件密码 signconfig配置 STORE_PASS store_pass 根据signconfig 签名key别名 signconfig配置 KEY_ALIAS store_key_alias 根据signconfig 签名key密码 signconfig配置 KEY_PASS store_key_pass 根据signconfig 部分参数说明如下： 加固类型值有5种 360 360加固 le 乐固加固 all 360和乐固加固 query 根据flavorName匹配加固关键字选择对应的加固类型（不区分大小写），包含360、qihu字符则使用360加固，包含yyb、legu、yingyongbao、tencent字符则使用乐固加固 空 不使用加固 插件已经内置乐固工具文件，但是还是建议使用自己加固，因为内置的没有更新 360加固工具每个os不一样，所以没办法内置，所以需要自己根据自己os配置 看着配置参数很多，如果不考虑复杂的情况配置很简单 具体使用应用插件 添加插件依赖 1234dependencies &#123; ... classpath &quot;com.tlz.tools:reinforce:1.0.0&quot;&#125; 应用插件 123apply plugin: &apos;com.tlz.androidreinforceplugin&apos; Gradle参数配置如果使用CI或者命令动态传参数可以不进行gradle配置 123456789101112131415161718192021222324252627282930313233AndroidReinForce &#123; //加固类型 四种方式 360 le all query 默认为空不使用任何加固 reinforceType = "" reinforce360 &#123; // 支持该加固 默认不支持 support = true // 是否自动加固 默认为true autoSign = true // 配置自己的360账号 user = "你的360账号" // 配置自己的360账号密码 pass = "你的360账号密码" // 配置自己的360加固文件路径 path = file("jiagu/jiagu.jar").absolutePath // 多渠道 默认为false // mulpkg = true // 多渠道文件配置路径 如果未开启多渠道 此参数可不填 // mulpkgConfigPath = file("mulpkg_config.txt").absolutePath &#125; reinforceLe &#123; // 支持该加固 默认不支持 support = true // 是否自动加固 默认为true // autoSign = true // 配置自己的乐固加固文件路径 可以选择不配置使用默认内置的 // path = file("ms-shield.jar").absolutePath // 配置自己的乐固secretId secretId = "你的secretId" // 配置自己的乐固secretKey secretKey = "你的secretKey" &#125;&#125;]]></content>
+      <categories>
+        <category>技术</category>
+        <category>GradlePlugin</category>
+      </categories>
+      <tags>
+        <tag>Gradle</tag>
+        <tag>Kotlin</tag>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[TeamCity部署Android持续化集成]]></title>
     <url>%2F2019%2F01%2F18%2Fteamcity-deploy-android%2F</url>
     <content type="text"><![CDATA[公司持续集成用的是Jenkins，TeamCity是自己私下玩玩，感觉挺不错的，就是资料教程啥的比较少安装过程比较简单，这里略过，官方文档 创建项目 进入Administration 点击CreateProject，填写代码仓库地址，如果有账户密码填入即可，然后点击Proceed 填写项目名和构建配置名称，构建配置名称默认是Build，可根据自己需求更改，我这里改成了Pack，然后点击Proceed 配置 等待创建完成，勾选Gradle编译步骤，点击Use selected 一般需求是编译release包，所以修改下gradle任务，点击edit 将build改为assembleRelease，这里可根据自己工程配置buildType自行修改，Gradle Wrapper也可根据自己的需求选择对应配置的版本 JDK也可以根据需求配置不同版本 保存 配置apk输出路径，选择左侧功能列表General Setting，路径规则是源码路径 =&gt; 输出路径，一般情况下设置成app\build\outputs\apk =&gt; outputs就可以了，别忘了保存 配置ANROID_HOME环境变量，打开TeamCity/buildAgent/conf/buildAgent.properties文件，在末尾加载android sdk的路径： 1env.ANDROID_HOME=你的sdk路径 可选配置修改git配置 选择左侧功能列表Version Control Setting，点击Edit 修改触发规则 选择左侧功能列表Triggers，可以自己添加触发规则 如果不想自动触发，可以将规则关闭或者删除 自定义参数 选择左侧功能列表Parameters，添加自己需求的参数即可 运行 点击Run开启一个编译任务 生成的apk文件在Artifacts下]]></content>
@@ -33,9 +47,9 @@
         <category>教程</category>
       </categories>
       <tags>
-        <tag>Android</tag>
-        <tag>Kotlin</tag>
         <tag>Gradle</tag>
+        <tag>Kotlin</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -47,8 +61,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Kotlin</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -88,10 +102,10 @@
         <category>教程</category>
       </categories>
       <tags>
-        <tag>Github Pages</tag>
-        <tag>Hexo</tag>
         <tag>博客</tag>
+        <tag>Github Pages</tag>
         <tag>Blog</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>
