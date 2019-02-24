@@ -78,11 +78,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[有感]]></title>
-    <url>%2F2018%2F03%2F26%2Fcreate-personal-blog-experience%2F</url>
-    <content type="text"><![CDATA[2018年3月26日晚，个人博客终于搭建完成，内心还是蛮激动的。由于自己技术比较菜，捣腾了好久才完成，踩了不少坑，走了不少弯路，光Github Pages绑定域名都弄了一下午。不过在这过程中，自己又学会了不少的技能，不亏不亏，哈哈！希望这是一个新的开始、好的开始！！！]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[Github Pages绑定自己的域名]]></title>
     <url>%2F2018%2F03%2F25%2Fbind-domain%2F</url>
     <content type="text"><![CDATA[创建CNAME文件进入博客网站根录，在source目录下新建一个名为CNAME的文件，不要建在public目录下，因为在执行hexo clean命令时public目录下的文件都会被删除；打开CNAME文件并填写你的域名xx.com，一定不要写www.；通过hexo d命令重新发布网站; DNS解析配置我这里以GoDadyy的配置为例；登陆Godaddy并进入DNS管理，现在修改名称为www的记录，把值修改为你的Github Pages访问地址xxx.github.io，以便能通过www.xx.com访问：点击添加按钮，添加一条记录，类型选择A，主机填写@，指向填写192.30.252.153，选择@类型是为让xx.com能正确访问:再次点击添加按钮，添加一条记录，类型选择A，主机填写@，指向填写192.30.252.154:完整配置效果如下：至此你的域名xx.com就能正确访问啦，有时域名解析有点慢，请耐心等待一会儿！]]></content>
